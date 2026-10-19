@@ -1,8 +1,15 @@
+import { useSelector } from 'react-redux';
+import type { RootState } from '../store';
+import { translations } from '../i18n';
+
 export const About_we = () => {
-    return (
-        <div>
-            <h3>О НАС</h3>
-            <p>мы кто то</p>
-        </div>
-    )
-}
+  const currentLang = useSelector((state: RootState) => state.lang.currentLang);
+  const t = translations[currentLang].about;
+
+  return (
+    <div>
+      <h3>{t.title}</h3>
+      <p>{t.description}</p>
+    </div>
+  );
+};
